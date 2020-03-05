@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+
+namespace exoAlgo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter a text:");
+            string enteredText = Console.ReadLine();
+            Console.WriteLine("Enter in encryption type:");
+            string encryptionType = Console.ReadLine();
+            Console.WriteLine("Your encryption type is : " + encryptionType);
+            Console.WriteLine("Enter in encryption space number:");
+            int encryptionSpaceNumber = Convert.ToInt32(Console.ReadLine());
+            if (encryptionType == "encryption")
+            {
+                Encryption(enteredText, encryptionSpaceNumber);
+            }
+            else
+            {
+                Decryption(enteredText, encryptionSpaceNumber);
+            }
+        }
+
+
+        public static string Encryption(string Text, int Key)
+        {
+            string resultText = "";
+            foreach (char Letter in Text)
+            {
+                int convertedLetter = (int)Letter + Key;
+                char reconvertedLetter = (char)convertedLetter;
+                resultText = resultText + reconvertedLetter;
+            }
+            Console.WriteLine(resultText);
+            return resultText;
+        }
+
+        public static string Decryption(string Text, int Key)
+        {
+            string resultText = "";
+            foreach (char Letter in Text)
+            {
+                int convertedLetter = (int)Letter - Key;
+                char reconvertedLetter = (char)convertedLetter;
+                resultText = resultText + reconvertedLetter;
+            }
+            Console.WriteLine(resultText);
+            return resultText;
+        }
+    }
+}
